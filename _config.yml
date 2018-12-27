@@ -72,15 +72,36 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: archer
+jsonContent:
+  meta: true
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: true
+    excerpt: false
+    categories: true
+    tags: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@gitee.com:raingather/RainGather.git
+  repo: 
+    gitee: git@gitee.com:raingather/RainGather.git,master
+    github: git@github.com:RainGather/RainGather.github.io.git,master
   branch: master
-  url: https://raingather.gitee.io/
+  # url: https://raingather.gitee.io/
+  
   # root: /assert_blog
   # type: rsync
   # host: starfork.top
