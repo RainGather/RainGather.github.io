@@ -12,4 +12,4 @@ date: 2017-12-17 18:30:08
 
 ~~[微信](http://starfork.me/uploads/wechatmp-qrcode.jpg)、[B站](https://space.bilibili.com/72312661)都会不定期的同步更新。~~
 
-联系方式左侧有。
+联系方式看下面。
