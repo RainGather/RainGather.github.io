@@ -2,7 +2,8 @@
 title: 玩转Windows VHD系统
 layout: post
 date: 2017-12-17 17:42:34
-tags: 运维
+author: 集雨
+tags: [运维, VHD, Windows, 虚拟机, 操作系统]
 ---
 
 从Windows 7开始，微软就出了一个新东西，叫做VHD。这是什么东西呢？如果你用过VMware等虚拟机，应该接触过虚拟磁盘，在VMware下是vmdk，而VHD就是微软自家的虚拟磁盘格式。
