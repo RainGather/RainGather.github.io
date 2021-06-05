@@ -1,0 +1,102 @@
+{
+  "main": {
+    "id": "f3ac011908f48aea",
+    "type": "split",
+    "children": [
+      {
+        "id": "fed263f811a2bbea",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "_posts/2018-12-27-B站视频测试.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "76923cea7d2a47b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "5dea4ae7b01bf1d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "01517bdf69f44897",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "06a751caf37cba0b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "468e268663307db5",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff80499f24e99683",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "89196c1be19a343a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_posts/2018-12-27-B站视频测试.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "fed263f811a2bbea",
+  "lastOpenFiles": [
+    "_posts/2018-12-27-B站视频测试.md",
+    "_posts/2017-12-17-Hello-World-0.md",
+    "_posts/2021-06-04-helloworld.md",
+    "_posts/2018-12-27-new-website.md",
+    "_posts/2021-06-05-newpost.md",
+    "templates/new_post_templates.md",
+    "templates/未命名.md",
+    "_posts/2017-12-17-玩转Windows-VHD系统.md",
+    "2017-12-17-驿站简介.md",
+    "2017-12-17-DIY简单的温度报警器.md"
+  ]
+}

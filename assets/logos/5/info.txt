@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: ProzaLibre-Light
+font link: https://fonts.google.com/specimen/Proza+Libre
+font author: Jasper de Waard
+font author site: http://bureauroffa.com/about-proza-libre
+
+
+icon designer: Larisa Skosyrska
+icon designer link: /Lara.Skosyrska
+        
+{"bg":"transparent","icon":"#488eff","font":"#2e3034","slogan":"#424448"}
+      
