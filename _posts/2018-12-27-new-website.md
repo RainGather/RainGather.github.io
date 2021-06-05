@@ -1,7 +1,7 @@
 ---
 title: new_website
 layout: post
-hide: true
+hidden: true
 date: 2018-12-27 21:05:02
 tags: [随笔, 运维]
 ---
