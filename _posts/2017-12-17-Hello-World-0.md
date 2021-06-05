@@ -1,6 +1,7 @@
 ---
 title: Hello World
 date: 2017-12-17 12:07:36
+hide: true
 layout: post
 tags:
 ---
