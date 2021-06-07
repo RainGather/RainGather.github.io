@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "_posts/2016-11-14-朋友圈的月亮怎么那么大？.md",
+            "file": "_posts/2021-06-07-基于Python的图片存储原理展示小工具.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2016-11-14-朋友圈的月亮怎么那么大？.md",
+                "file": "_posts/2021-06-07-基于Python的图片存储原理展示小工具.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,6 +88,7 @@
   },
   "active": "fed263f811a2bbea",
   "lastOpenFiles": [
+    "_posts/2021-06-07-基于Python的图片存储原理展示小工具.md",
     "_posts/2021-06-07-newpost.md",
     "_posts/2017-12-17-玩转Windows-VHD系统.md",
     "_posts/2017-12-17-有云的星轨，怎么拍？.md",
@@ -96,7 +97,6 @@
     "_posts/hidden/2021-06-04-helloworld.md",
     "_posts/2021-06-06-newpost.md",
     "_posts/2017-12-17-Hello-World-0.md",
-    "_posts/2017-12-17-驿站简介.md",
-    "_posts/2018-12-27-new-website.md"
+    "_posts/2017-12-17-驿站简介.md"
   ]
 }
