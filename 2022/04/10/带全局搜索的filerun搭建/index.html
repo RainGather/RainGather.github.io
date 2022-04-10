@@ -28,7 +28,7 @@
 <meta property="og:description" content="简介filerun是国外的一款网盘程序。基于php，可以用docker来安装。 filerun预制了与elasticsearch的接口，可以很方便的使用elasticsearch配合tika来作为全局搜索。 elasticsearch是一款开源搜索引擎，而tika是一款通用的开源内容分析工具，简而言之，可以理解为tika把类似图片、pdf、word等不同格式的文件内的内容提取出来，然后让elast">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-10T03:19:51.000Z">
-<meta property="article:modified_time" content="2022-04-10T04:29:43.903Z">
+<meta property="article:modified_time" content="2022-04-10T05:31:07.704Z">
 <meta property="article:author" content="集雨">
 <meta property="article:tag" content="运维">
 <meta property="article:tag" content="pve">
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-04-10 11:19:51 / Modified: 12:29:43" itemprop="dateCreated datePublished" datetime="2022-04-10T11:19:51+08:00">2022-04-10</time>
+              <time title="Created: 2022-04-10 11:19:51 / Modified: 13:31:07" itemprop="dateCreated datePublished" datetime="2022-04-10T11:19:51+08:00">2022-04-10</time>
             </span>
 
           
@@ -245,7 +245,7 @@
 
 <p>运行上述脚本进行安装和部署。</p>
 <h2 id="3-进行设置"><a href="#3-进行设置" class="headerlink" title="3. 进行设置"></a>3. 进行设置</h2><p>进入到<code>Control panel</code> -&gt; <code>Files</code> -&gt; <code>Searching</code></p>
-<p>勾选<code>Enable content indexing for text documents</code>，将&#96;&#96;Elasticsearch<code>设置为</code><a href="http://elasticsearch:9200`，点击`test">http://elasticsearch:9200`，点击`test</a> server<code>，应该一切正常。如果提示有问题，等待个几分钟再试，刚刚部署完时elasticsearch启动初始化需要时间。强调下这里注意url不要填</code>filerun_esearch<code>，因为</code>docker-compose.yml<code>里设置的links是</code>elasticsearch&#96;。</p>
+<p>勾选<code>Enable content indexing for text documents</code>，将<code>Elasticsearch</code>设置为<code>http://elasticsearch:9200</code>，点击<code>test server</code>，应该一切正常。如果提示有问题，等待个几分钟再试，刚刚部署完时elasticsearch启动初始化需要时间。强调下这里注意url不要填<code>filerun_esearch</code>，因为<code>docker-compose.yml</code>里设置的links是<code>elasticsearch</code>。</p>
 <p>在<code>Apache Tika </code>里，设置<code>Apache Tika server hostname</code>为<code>tika</code>，<code>Port number</code>设为9998，勾选<code>OCR PDF files</code>，点击<code>test server</code>，按流程下来应该一切正常。</p>
 <h1 id="与官方版本的区别"><a href="#与官方版本的区别" class="headerlink" title="与官方版本的区别"></a>与官方版本的区别</h1><p>相对于官方的版本，我这边做了一些修改，其中主要有以下几个：</p>
 <h4 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h4><p>因为部分服务器可能涉及iSCSI挂载等情况，所以我将所有的<code>restart</code>都设置为了<code>no</code>，可以自己写脚本实现重启后的自动运行。</p>
