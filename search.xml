@@ -243,4 +243,19 @@
         <tag>aliyun</tag>
       </tags>
   </entry>
+  <entry>
+    <title>pve硬盘直通</title>
+    <url>/2022/04/10/pve%E7%A1%AC%E7%9B%98%E7%9B%B4%E9%80%9A/</url>
+    <content><![CDATA[<p>使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">qm set &lt;vm_id&gt; –&lt;disk_type&gt;[n] /dev/disk/by-id/&lt;type&gt;-$brand-$model_$serial_number</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">qm set 100 –sata0 /dev/disk/by-id/wwn-0x3000c500a2533abe</span><br></pre></td></tr></table></figure>
+
+<p>其中100是虚拟机id号</p>
+]]></content>
+      <tags>
+        <tag>pve</tag>
+      </tags>
+  </entry>
 </search>
