@@ -186,6 +186,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://raingather.top/2017/12/17/2017-12-17-%E7%8E%A9%E8%BD%ACWindows-VHD%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="集雨">
+      <meta itemprop="description" content="高中技术选考向的分享博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="断言集">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/17/2017-12-17-%E7%8E%A9%E8%BD%ACWindows-VHD%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">玩转Windows VHD系统</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-17 17:42:34" itemprop="dateCreated datePublished" datetime="2017-12-17T17:42:34+08:00">2017-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-20 10:28:25" itemprop="dateModified" datetime="2021-07-20T10:28:25+08:00">2021-07-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>从Windows 7开始，微软就出了一个新东西，叫做VHD。这是什么东西呢？如果你用过VMware等虚拟机，应该接触过虚拟磁盘，在VMware下是vmdk，而VHD就是微软自家的虚拟磁盘格式。</p>
+<p>可能你会问了，虚拟磁盘是啥？和还原卡什么关系？为什么可以用VHD做还原系统？</p>
+<p>别急，我们一个个来解释。</p>
+<p>虚拟磁盘顾名思义，是一个虚拟出来的磁盘。我们知道现实中的磁盘是一个硬件，接上主板后可以在系统里被识别。而虚拟磁盘其实是存在于物理磁盘中的一个文件，这个文件被操作系统或其它软件挂载后，会被系统当作一块物理磁盘一样对待。</p>
+<p>在Windows 7以上的系统中，<strong>右键 我的电脑（Win7） <strong>或 <strong>右键左下角的开始菜单（Win8以上）</strong> - <strong>管理（或者是计算机管理）</strong>，在左侧先</strong>左键点击磁盘管理</strong>，等待右侧显示出磁盘信息时，再<strong>右键磁盘管理</strong>，选择创建VHD，接下去根据提示完成创建即可。大小推荐70G，并选择动态扩展。这个创建好的VHD我为其命名为base.vhd，接下去提到的base.vhd都是指这个。读者可以根据自己的需要随意改名成其它名字。</p>
+<p>一般创建完的VHD会自动挂载，如果没有挂载，需要自己去双击那个VHD文件来挂载。刚挂载的VHD如同一个全新的硬盘，会要求你选择MBR或GPT，并格式化。为了兼容老系统，这里可以选择MBR，并格式化一个分区。</p>
+<p>以上这些做完以后，你就有了一个有70G分区的虚拟硬盘。那么，这个可以拿来做什么呢？和还原系统有什么关系呢？</p>
+<p>在这里就要介绍另外一个VHD的特性，叫做差分系统。什么意思呢？VHD虚拟磁盘创建除了建立一个全新的空磁盘，还可以继承一个现有的VHD来创建一个子VHD。该子VHD内映射了父VHD里的所有数据，并且在子VHD内的所有操作只会在子VHD内产生变化，而不会影响父VHD的内容。很多熟悉VMware的人看到这里应该也就明白了，这就是VMware等虚拟机里类似“快照”的功能。而我们的还原功能，也是通过这个差分系统来完成。</p>
+<p>首先我们将所需要安装的系统，装在最早创建的base.vhd里。安装的方法有很多，我建议采取官方的方法，去微软官网下载Windows AIK，在AIK里有ImageX.exe的一个程序，可以用来提取Windows安装镜像中的内容直接释放到指定目录下。如果嫌麻烦也可以网上直接找下ImageX.exe的下载。也有很多第三方可以实现类似的功能，比如GHOST之类的，但是不是太建议使用。</p>
+<p>有了Imagex以后，可以先将系统ISO挂载，或者如果是光盘的话先将光盘塞入光驱。之后打开，看看sources文件夹下是不是有一个非常大的install.wim文件。之后在命令提示符里输入</p>
+<p>*<em>imagex &#x2F;apply X:\sources\install.wim 1 V:*</em></p>
+<p>其中X换成ISO加载后的盘符，V换成VHD加载后的盘符。之后就会将系统提取到VHD的盘符内。</p>
+<p>之后用AIK里的bcdboot工具添加该vhd的windows引导，命令格式为：</p>
+<p><strong>bcdboot V:\windows &#x2F;l zh-cn &#x2F;s C:</strong></p>
+<p>其中V换成VHD加载后的盘符，C:换成当前硬盘引导所在扇区，一半默认是C盘。完成后重启，可以出现这个新的vhd的安装引导，进入就是一个全新的系统。</p>
+<p>在这个新系统中安装好自己想用的各种软件，完成设置。之后重启，进入PE系统（或者其它第三方系统），使用命令创建基于base.vhd的子VHD（有些PE自带一些VHD工具，也可以用这类创建）</p>
+<p><strong>create vdisk file&#x3D;D:\run.vhd parent&#x3D;D:\base.vhd</strong></p>
+<p>此处D:\base.vhd换成你自己base.vhd保存的路径，run.vhd也可以自定义路径，就是不要放到挂载在VHD的分区里即可。</p>
+<p>命令运行后，请千万千万不要再打开base.vhd，不要挂载base.vhd，否则会导致run.vhd出错。</p>
+<p>现在双击run.vhd文件，会自动挂载，进入后一看会发现和base.vhd里的文件一模一样，这个就是子VHD的特性，完整继承了base.vhd内的数据，但时又不占用过大空间。</p>
+<p>接下去我们用bcdboot工具将run.vhd添加到启动项，将原来的base.vhd的系统启动项删除（因为base.vhd现在作为父vhd，已经不可用再进行任何修改，否则run.vhd就会出错）。删除和添加的步骤如下：</p>
+<p>首先在CMD运行 bcdedit，会显示当前的启动项信息，此时记住vhd启动项的标识符，就是{current}或者{f8735235-b343-11e5-8124-a1b7d9a6efeb}这类的值。</p>
+<p>之后运行 bcdedit &#x2F;delete {标识符} 删除该启动项，注意把{标识符}替换成上面记录的值，如：{current}</p>
+<p>接下去用bcdboot添加启动项（和之前添加的方法一样）：</p>
+<p><strong>bcdboot V:\windows &#x2F;l zh-cn &#x2F;s C:</strong></p>
+<p>其中 V:\改为run.vhd挂载后的分区。</p>
+<p>之后再重启，选择run.vhd的启动项进入系统，即为进入了还原系统。如果某天你想还原该系统到base.vhd的情况，只要进入PE，将run.vhd删除并重新建立一个run.vhd的base.vhd子vhd即可。</p>
+<p>当然以上手法显得不够自动化，如果我们需要系统在每次重启的时候都做出如上所述的还原效果，需要再添加个第三方系统来完成一些自动操作，尝试用linux成功，由于篇幅限制不展开讲述。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://raingather.top/2016/11/14/2016-11-14-%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E6%9C%88%E4%BA%AE%E6%80%8E%E4%B9%88%E9%82%A3%E4%B9%88%E5%A4%A7%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -339,14 +431,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -297,4 +297,20 @@
         <tag>filerun</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vim排序、删除特定行等高级用法</title>
+    <url>/2022/04/13/vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<p>vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。</p>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
+<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort /::.\+$/</code>，还是一样的逻辑，sort后面跟着的是正则表达式，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
+<p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
+]]></content>
+      <tags>
+        <tag>vim</tag>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
 </search>
