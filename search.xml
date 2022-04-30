@@ -336,4 +336,33 @@
         <tag>filerun</tag>
       </tags>
   </entry>
+  <entry>
+    <title>tailscale局域网访问节点</title>
+    <url>/2022/04/26/tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/</url>
+    <content><![CDATA[<p>tailscale除了异地组网，还可以提供内网访问节点(Subnet routers and traffic relay nodes)的功能，类似国内的蒲公英设备。</p>
+<p>目前好像仅供Linux主机使用，方法比较简单，首先开启安装了tailscale的Linux的转发：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &#x27;net.ipv4.ip_forward = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">echo &#x27;net.ipv6.conf.all.forwarding = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<p>然后运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo tailscale up --advertise-routes=192.168.0.0/24,10.65.1.0/24</span><br></pre></td></tr></table></figure>
+
+<p>这样就将<code>192.168.0.*</code>和<code>10.65.1.*</code>作为了subnet。</p>
+<p>不过要使其起作用还需要在tailscale的控制页面上对应机器的<code>Edit route setting</code>启用subnet，并且启用<code>Disable key expiry</code>，防止key到期后比较麻烦。</p>
+<p>当其他地方访问时，需要启用接受局域网：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo tailscale up --accept-routes</span><br></pre></td></tr></table></figure>
+
+<p>之后访问这些局域网ip时会被转到这个节点所在的局域网访问。</p>
+<blockquote>
+<p> <a href="https://tailscale.com/kb/1019/subnets/">官网Subnet配置相关文档</a></p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+        <tag>内网穿透</tag>
+        <tag>tailscale</tag>
+        <tag>zerotier</tag>
+        <tag>WireGuard</tag>
+        <tag>异地组网</tag>
+      </tags>
+  </entry>
 </search>
