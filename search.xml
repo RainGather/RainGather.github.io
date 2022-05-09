@@ -365,4 +365,20 @@
         <tag>异地组网</tag>
       </tags>
   </entry>
+  <entry>
+    <title>万词王wantwords反向词典</title>
+    <url>/2022/05/09/20220509-221527-%E4%B8%87%E8%AF%8D%E7%8E%8Bwantwords%E5%8F%8D%E5%90%91%E8%AF%8D%E5%85%B8/</url>
+    <content><![CDATA[<p>有时候我们会想用某个词，但是只记得其意思，却回想不起来这个词是啥，这个时候就可以用反向词典，用词的含义反查这个词。<a href="https://wantwords.net/">WantWords 反向词典</a>是做的比较好的反向词典，包括中文反查和英文反查，直接在页面里输入想用词汇的意思描述，就会有推荐词汇出来。有时候按下搜索不会马上出来，会慢一些，猜测可能在后台推理计算吧。</p>
+<p>另外，这东西有时候还能拿来起变量名用，挺不错的。</p>
+<p><a href="https://github.com/thunlp/WantWords">Github地址</a></p>
+]]></content>
+      <tags>
+        <tag>网站</tag>
+        <tag>人工智能</tag>
+        <tag>应用</tag>
+        <tag>app</tag>
+        <tag>反向词典</tag>
+        <tag>网页收藏夹</tag>
+      </tags>
+  </entry>
 </search>
