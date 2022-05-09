@@ -269,7 +269,7 @@
 <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
-<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort /::.\+$/</code>，还是一样的逻辑，sort后面跟着的是正则表达式，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
+<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort r /::.\+$/</code>，还是一样的逻辑，其中<code>r</code>代表根据正则表达式内的结果排序，不加<code>r</code>的话忽略正则表达式内的结果后排序，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
 <p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
 ]]></content>
       <tags>
@@ -380,5 +380,10 @@
         <tag>反向词典</tag>
         <tag>网页收藏夹</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>一个模拟电路网站</title>
+    <url>/2022/05/09/20220509-222506-%E4%B8%80%E4%B8%AA%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

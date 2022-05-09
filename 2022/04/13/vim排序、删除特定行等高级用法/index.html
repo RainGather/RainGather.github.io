@@ -28,7 +28,7 @@
 <meta property="og:description" content="vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。 测试用例12f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-13T12:51:08.000Z">
-<meta property="article:modified_time" content="2022-04-20T00:49:17.218Z">
+<meta property="article:modified_time" content="2022-05-09T14:39:59.430Z">
 <meta property="article:author" content="集雨">
 <meta property="article:tag" content="vim">
 <meta property="article:tag" content="linux">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-20 08:49:17" itemprop="dateModified" datetime="2022-04-20T08:49:17+08:00">2022-04-20</time>
+                <time title="Modified: 2022-05-09 22:39:59" itemprop="dateModified" datetime="2022-05-09T22:39:59+08:00">2022-05-09</time>
               </span>
 
           
@@ -240,7 +240,7 @@
 <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
 
 <h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
-<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort /::.\+$/</code>，还是一样的逻辑，sort后面跟着的是正则表达式，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
+<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort r /::.\+$/</code>，还是一样的逻辑，其中<code>r</code>代表根据正则表达式内的结果排序，不加<code>r</code>的话忽略正则表达式内的结果后排序，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
 <p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
 
     </div>
@@ -341,7 +341,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
