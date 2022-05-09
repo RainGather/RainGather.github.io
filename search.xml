@@ -248,54 +248,8 @@
       </tags>
   </entry>
   <entry>
-    <title>万词王wantwords反向词典</title>
-    <url>/2022/05/09/20220509-221527-%E4%B8%87%E8%AF%8D%E7%8E%8Bwantwords%E5%8F%8D%E5%90%91%E8%AF%8D%E5%85%B8/</url>
-    <content><![CDATA[<p>有时候我们会想用某个词，但是只记得其意思，却回想不起来这个词是啥，这个时候就可以用反向词典，用词的含义反查这个词。<a href="https://wantwords.net/">WantWords 反向词典</a>是做的比较好的反向词典，包括中文反查和英文反查，直接在页面里输入想用词汇的意思描述，就会有推荐词汇出来。有时候按下搜索不会马上出来，会慢一些，猜测可能在后台推理计算吧。</p>
-<p>另外，这东西有时候还能拿来起变量名用，挺不错的。</p>
-<p><a href="https://github.com/thunlp/WantWords">Github地址</a></p>
-]]></content>
-      <tags>
-        <tag>网站</tag>
-        <tag>人工智能</tag>
-        <tag>应用</tag>
-        <tag>app</tag>
-        <tag>反向词典</tag>
-        <tag>网页收藏夹</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一个模拟电路网站</title>
-    <url>/2022/05/09/20220509-222506-%E4%B8%80%E4%B8%AA%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E7%BD%91%E7%AB%99/</url>
-    <content><![CDATA[<p>通用选考部分需要电子电路的模拟时，可以参考这个项目: <a href="https://www.falstad.com/circuit/">falstad electronic circuit simulator</a>，<a href="https://www.falstad.com/circuit/circuitjs.html">全屏版</a>，目前已自带中文，如果因为网络原因加载不便，也可以下载其<a href="https://www.falstad.com/circuit/offline/">离线包</a>使用。</p>
-]]></content>
-      <tags>
-        <tag>网站</tag>
-        <tag>网页收藏夹</tag>
-        <tag>网页</tag>
-        <tag>电子电路</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vim排序、删除特定行等高级用法</title>
-    <url>/2022/04/13/20220413-205108-vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<p>vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。</p>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
-<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort r /::.\+$/</code>，还是一样的逻辑，其中<code>r</code>代表根据正则表达式内的结果排序，不加<code>r</code>的话忽略正则表达式内的结果后排序，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
-<p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
-<hr>
-<p>更多vim手册和帮助可以查看<a href="https://yianwillis.github.io/vimcdoc/doc/">VIM 中文帮助: 以字母顺序排列的命令索引 (yianwillis.github.io)</a></p>
-]]></content>
-      <tags>
-        <tag>vim</tag>
-        <tag>linux</tag>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tailscale局域网访问节点</title>
-    <url>/2022/04/26/20220426-220025-tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/</url>
+    <url>/2022/04/26/2022-04-26-220025-tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<p>tailscale除了异地组网，还可以提供内网访问节点(Subnet routers and traffic relay nodes)的功能，类似国内的蒲公英设备。</p>
 <p>目前好像仅供Linux主机使用，方法比较简单，首先开启安装了tailscale的Linux的转发：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &#x27;net.ipv4.ip_forward = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">echo &#x27;net.ipv6.conf.all.forwarding = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
@@ -324,7 +278,7 @@
   </entry>
   <entry>
     <title>pve硬盘直通</title>
-    <url>/2022/04/10/20220410-110802-pve%E7%A1%AC%E7%9B%98%E7%9B%B4%E9%80%9A/</url>
+    <url>/2022/04/10/2022-04-10-110802-pve%E7%A1%AC%E7%9B%98%E7%9B%B4%E9%80%9A/</url>
     <content><![CDATA[<p>使用命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">qm set &lt;vm_id&gt; –&lt;disk_type&gt;[n] /dev/disk/by-id/&lt;type&gt;-$brand-$model_$serial_number</span><br></pre></td></tr></table></figure>
 
@@ -340,7 +294,7 @@
   </entry>
   <entry>
     <title>带全局搜索的filerun搭建</title>
-    <url>/2022/04/10/20220410-111951-%E5%B8%A6%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E7%9A%84filerun%E6%90%AD%E5%BB%BA/</url>
+    <url>/2022/04/10/2022-04-10-111951-%E5%B8%A6%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E7%9A%84filerun%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>filerun是国外的一款网盘程序。基于php，可以用docker来安装。</p>
 <p>filerun预制了与elasticsearch的接口，可以很方便的使用elasticsearch配合tika来作为全局搜索。</p>
 <p>elasticsearch是一款开源搜索引擎，而tika是一款通用的开源内容分析工具，简而言之，可以理解为tika把类似图片、pdf、word等不同格式的文件内的内容提取出来，然后让elasticsearch进行索引并提供搜索服务。</p>
@@ -378,8 +332,54 @@
       </tags>
   </entry>
   <entry>
+    <title>万词王wantwords反向词典</title>
+    <url>/2022/05/09/2022-05-09-221527-%E4%B8%87%E8%AF%8D%E7%8E%8Bwantwords%E5%8F%8D%E5%90%91%E8%AF%8D%E5%85%B8/</url>
+    <content><![CDATA[<p>有时候我们会想用某个词，但是只记得其意思，却回想不起来这个词是啥，这个时候就可以用反向词典，用词的含义反查这个词。<a href="https://wantwords.net/">WantWords 反向词典</a>是做的比较好的反向词典，包括中文反查和英文反查，直接在页面里输入想用词汇的意思描述，就会有推荐词汇出来。有时候按下搜索不会马上出来，会慢一些，猜测可能在后台推理计算吧。</p>
+<p>另外，这东西有时候还能拿来起变量名用，挺不错的。</p>
+<p><a href="https://github.com/thunlp/WantWords">Github地址</a></p>
+]]></content>
+      <tags>
+        <tag>网站</tag>
+        <tag>人工智能</tag>
+        <tag>应用</tag>
+        <tag>app</tag>
+        <tag>反向词典</tag>
+        <tag>网页收藏夹</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vim排序、删除特定行等高级用法</title>
+    <url>/2022/04/13/2022-04-13-205108-vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<p>vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。</p>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
+<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort r /::.\+$/</code>，还是一样的逻辑，其中<code>r</code>代表根据正则表达式内的结果排序，不加<code>r</code>的话忽略正则表达式内的结果后排序，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
+<p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
+<hr>
+<p>更多vim手册和帮助可以查看<a href="https://yianwillis.github.io/vimcdoc/doc/">VIM 中文帮助: 以字母顺序排列的命令索引 (yianwillis.github.io)</a></p>
+]]></content>
+      <tags>
+        <tag>vim</tag>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个模拟电路网站</title>
+    <url>/2022/05/09/2022-05-09-222506-%E4%B8%80%E4%B8%AA%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E7%BD%91%E7%AB%99/</url>
+    <content><![CDATA[<p>通用选考部分需要电子电路的模拟时，可以参考这个项目: <a href="https://www.falstad.com/circuit/">falstad electronic circuit simulator</a>，<a href="https://www.falstad.com/circuit/circuitjs.html">全屏版</a>，目前已自带中文，如果因为网络原因加载不便，也可以下载其<a href="https://www.falstad.com/circuit/offline/">离线包</a>使用。</p>
+]]></content>
+      <tags>
+        <tag>网站</tag>
+        <tag>网页收藏夹</tag>
+        <tag>网页</tag>
+        <tag>电子电路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python使用turtle画树</title>
-    <url>/2022/04/19/20220419-185511-python-turtle-draw-tree/</url>
+    <url>/2022/04/19/2022-04-19-185511-python-turtle-draw-tree/</url>
     <content><![CDATA[<p>这两天在整理存储数据，翻出来一些老东西，有个以前网上找来的代码（不知道哪里拿来的忘记了），可以用python的turtle库画樱花，还挺好看的，用的是递归，在这里记录下：</p>
 <p><img src="/assets/python-turtle-draw-tree.assets/tree.png" alt="tree"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">t = turtle.Turtle()</span><br><span class="line">w = turtle.Screen()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tree</span>(<span class="params">branchLen, t</span>):</span><br><span class="line">    <span class="keyword">if</span> branchLen &gt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="number">8</span> &lt;= branchLen &lt;= <span class="number">12</span>:</span><br><span class="line">            <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">2</span>) == <span class="number">0</span>:</span><br><span class="line">                t.color(<span class="string">&#x27;snow&#x27;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                t.color(<span class="string">&#x27;lightcoral&#x27;</span>)</span><br><span class="line">            t.pensize(branchLen / <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">elif</span> branchLen &lt; <span class="number">8</span>:</span><br><span class="line">            <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">1</span>) == <span class="number">0</span>:</span><br><span class="line">                t.color(<span class="string">&#x27;snow&#x27;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                t.color(<span class="string">&#x27;lightcoral&#x27;</span>)</span><br><span class="line">            t.pensize(branchLen / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            t.color(<span class="string">&#x27;sienna&#x27;</span>)</span><br><span class="line">            t.pensize(branchLen / <span class="number">10</span>)</span><br><span class="line">        t.forward(branchLen)</span><br><span class="line">        a = <span class="number">1.5</span> * random.random()</span><br><span class="line">        t.right(<span class="number">20</span>*a)</span><br><span class="line">        b = <span class="number">1.5</span> * random.random()</span><br><span class="line">        tree(branchLen-<span class="number">10</span>*b, t)</span><br><span class="line">        t.left(<span class="number">40</span>*a)</span><br><span class="line">        tree(branchLen-<span class="number">10</span>*b, t)</span><br><span class="line">        t.right(<span class="number">20</span>*a)</span><br><span class="line">        t.up()</span><br><span class="line">        t.backward(branchLen)</span><br><span class="line">        t.down()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">petal</span>(<span class="params">m, t</span>):  <span class="comment"># 树下花瓣</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        a = <span class="number">200</span> - <span class="number">400</span> * random.random()</span><br><span class="line">        b = <span class="number">10</span> - <span class="number">20</span> * random.random()</span><br><span class="line">        t.up()</span><br><span class="line">        t.forward(b)</span><br><span class="line">        t.left(<span class="number">90</span>)</span><br><span class="line">        t.forward(a)</span><br><span class="line">        t.down()</span><br><span class="line">        t.color(<span class="string">&quot;lightcoral&quot;</span>)</span><br><span class="line">        t.circle(<span class="number">1</span>)</span><br><span class="line">        t.up()</span><br><span class="line">        t.backward(a)</span><br><span class="line">        t.right(<span class="number">90</span>)</span><br><span class="line">        t.backward(b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    t = turtle.Turtle()</span><br><span class="line">    myWin = turtle.Screen()</span><br><span class="line">    getscreen().tracer(<span class="number">5</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.screensize(bg=<span class="string">&#x27;wheat&#x27;</span>)</span><br><span class="line">    t.left(<span class="number">90</span>)</span><br><span class="line">    t.up()</span><br><span class="line">    t.backward(<span class="number">150</span>)</span><br><span class="line">    t.down()</span><br><span class="line">    t.color(<span class="string">&#x27;sienna&#x27;</span>)</span><br><span class="line">    tree(<span class="number">60</span>, t)</span><br><span class="line">    petal(<span class="number">100</span>, t)</span><br><span class="line">    myWin.exitonclick()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>

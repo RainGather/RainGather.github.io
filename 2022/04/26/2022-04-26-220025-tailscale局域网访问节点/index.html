@@ -20,22 +20,25 @@
     var CONFIG = {"hostname":"raingather.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。 测试用例12f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\">
+  <meta name="description" content="tailscale除了异地组网，还可以提供内网访问节点(Subnet routers and traffic relay nodes)的功能，类似国内的蒲公英设备。 目前好像仅供Linux主机使用，方法比较简单，首先开启安装了tailscale的Linux的转发： 123echo &amp;#x27;net.ipv4.ip_forward &#x3D; 1&amp;#x27; | sudo tee -a &#x2F;etc&#x2F;sysc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim排序、删除特定行等高级用法">
-<meta property="og:url" content="https://raingather.top/2022/04/13/20220413-205108-vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:title" content="tailscale局域网访问节点">
+<meta property="og:url" content="https://raingather.top/2022/04/26/2022-04-26-220025-tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="断言集">
-<meta property="og:description" content="vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。 测试用例12f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\">
+<meta property="og:description" content="tailscale除了异地组网，还可以提供内网访问节点(Subnet routers and traffic relay nodes)的功能，类似国内的蒲公英设备。 目前好像仅供Linux主机使用，方法比较简单，首先开启安装了tailscale的Linux的转发： 123echo &amp;#x27;net.ipv4.ip_forward &#x3D; 1&amp;#x27; | sudo tee -a &#x2F;etc&#x2F;sysc">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-04-13T12:51:08.000Z">
-<meta property="article:modified_time" content="2022-05-09T15:02:53.245Z">
+<meta property="article:published_time" content="2022-04-26T14:00:25.000Z">
+<meta property="article:modified_time" content="2022-04-29T00:23:28.428Z">
 <meta property="article:author" content="集雨">
-<meta property="article:tag" content="vim">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="shell">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="内网穿透">
+<meta property="article:tag" content="tailscale">
+<meta property="article:tag" content="zerotier">
+<meta property="article:tag" content="WireGuard">
+<meta property="article:tag" content="异地组网">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://raingather.top/2022/04/13/20220413-205108-vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">
+<link rel="canonical" href="https://raingather.top/2022/04/26/2022-04-26-220025-tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/">
 
 
 <script id="page-configurations">
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>vim排序、删除特定行等高级用法 | 断言集</title>
+  <title>tailscale局域网访问节点 | 断言集</title>
   
 
 
@@ -192,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://raingather.top/2022/04/13/20220413-205108-vim%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C%E7%AD%89%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://raingather.top/2022/04/26/2022-04-26-220025-tailscale%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +208,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vim排序、删除特定行等高级用法
+          tailscale局域网访问节点
         </h1>
 
         <div class="post-meta">
@@ -215,14 +218,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-04-13 20:51:08" itemprop="dateCreated datePublished" datetime="2022-04-13T20:51:08+08:00">2022-04-13</time>
+              <time title="Created: 2022-04-26 22:00:25" itemprop="dateCreated datePublished" datetime="2022-04-26T22:00:25+08:00">2022-04-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-09 23:02:53" itemprop="dateModified" datetime="2022-05-09T23:02:53+08:00">2022-05-09</time>
+                <time title="Modified: 2022-04-29 08:23:28" itemprop="dateModified" datetime="2022-04-29T08:23:28+08:00">2022-04-29</time>
               </span>
 
           
@@ -236,14 +239,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>vim很高深，最近学了几个排序和删除特定行的用法，来做个记录。</p>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f6c9532e1f4b66be96f0f56bd7c3a3c1997ea8066b91bfcc984e41f072c347ba::C:\Windows\System32\cmd.exe</span><br><span class="line">200b49c11437c344b2cd62f02a5357b2638be7514bd04b3ded797e097912c912::D:\pic.jpg</span><br></pre></td></tr></table></figure>
+        <p>tailscale除了异地组网，还可以提供内网访问节点(Subnet routers and traffic relay nodes)的功能，类似国内的蒲公英设备。</p>
+<p>目前好像仅供Linux主机使用，方法比较简单，首先开启安装了tailscale的Linux的转发：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;net.ipv4.ip_forward = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">echo &#x27;net.ipv6.conf.all.forwarding = 1&#x27; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
 
-<h2 id="删除特定行"><a href="#删除特定行" class="headerlink" title="删除特定行"></a>删除特定行</h2><p>如果想删除Windows系统目录下的行，可以使用<code>:g/::C:\\Windows\\System32/d</code>，其中g代表全局搜索，后续跟着的是正则表达式，注意因为转义的原因，其中的斜杠要写成<code>\/</code>，反斜杠要写成<code>\\</code>。</p>
-<h2 id="特殊规则排序"><a href="#特殊规则排序" class="headerlink" title="特殊规则排序"></a>特殊规则排序</h2><p>如果想根据路径进行排序，可以使用<code>:sort r /::.\+$/</code>，还是一样的逻辑，其中<code>r</code>代表根据正则表达式内的结果排序，不加<code>r</code>的话忽略正则表达式内的结果后排序，正则表达式必须用两个斜杠包裹，其中<code>::</code>直接代表<code>::</code>字符，<code>.</code>代表任意字符，<code>\+</code>以为着出现1到n次前一个字符，在这里<code>+</code>由于有特殊作用需要用反斜杠来转义。<code>$</code>意味这到最末尾。</p>
-<p>合在一起就是：每行选取符合::开头（但不是最后的::）到末尾的字符串，以这些字符串作为依据对每行进行排序。</p>
-<hr>
-<p>更多vim手册和帮助可以查看<a target="_blank" rel="noopener" href="https://yianwillis.github.io/vimcdoc/doc/">VIM 中文帮助: 以字母顺序排列的命令索引 (yianwillis.github.io)</a></p>
+<p>然后运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tailscale up --advertise-routes=192.168.0.0/24,10.65.1.0/24</span><br></pre></td></tr></table></figure>
+
+<p>这样就将<code>192.168.0.*</code>和<code>10.65.1.*</code>作为了subnet。</p>
+<p>不过要使其起作用还需要在tailscale的控制页面上对应机器的<code>Edit route setting</code>启用subnet，并且启用<code>Disable key expiry</code>，防止key到期后比较麻烦。</p>
+<p>当其他地方访问时，需要启用接受局域网：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tailscale up --accept-routes</span><br></pre></td></tr></table></figure>
+
+<p>之后访问这些局域网ip时会被转到这个节点所在的局域网访问。</p>
+<blockquote>
+<p> <a target="_blank" rel="noopener" href="https://tailscale.com/kb/1019/subnets/">官网Subnet配置相关文档</a></p>
+</blockquote>
 
     </div>
 
@@ -253,9 +264,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/vim/" rel="tag"># vim</a>
-              <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/shell/" rel="tag"># shell</a>
+              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
+              <a href="/tags/tailscale/" rel="tag"># tailscale</a>
+              <a href="/tags/zerotier/" rel="tag"># zerotier</a>
+              <a href="/tags/WireGuard/" rel="tag"># WireGuard</a>
+              <a href="/tags/%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/" rel="tag"># 异地组网</a>
           </div>
 
         
@@ -264,12 +278,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/10/20220410-111951-%E5%B8%A6%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E7%9A%84filerun%E6%90%AD%E5%BB%BA/" rel="prev" title="带全局搜索的filerun搭建">
-      <i class="fa fa-chevron-left"></i> 带全局搜索的filerun搭建
+    <a href="/2022/04/19/2022-04-19-185511-python-turtle-draw-tree/" rel="prev" title="python使用turtle画树">
+      <i class="fa fa-chevron-left"></i> python使用turtle画树
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/04/19/20220419-185511-python-turtle-draw-tree/" rel="next" title="python使用turtle画树">
-      python使用turtle画树 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/09/2022-05-09-221527-%E4%B8%87%E8%AF%8D%E7%8E%8Bwantwords%E5%8F%8D%E5%90%91%E8%AF%8D%E5%85%B8/" rel="next" title="万词王wantwords反向词典">
+      万词王wantwords反向词典 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -329,7 +343,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">测试用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E8%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">删除特定行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E8%A7%84%E5%88%99%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">特殊规则排序</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
