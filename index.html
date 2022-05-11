@@ -186,6 +186,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://raingather.top/2022/05/11/2022-05-11-131152-%E7%BD%91%E4%B8%8A%E5%87%A0%E4%B9%8E%E9%83%BD%E9%9A%BE%E4%BB%A5%E6%89%BE%E5%88%B0%E7%9A%84Caddyfile%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="集雨">
+      <meta itemprop="description" content="高中技术选考向的分享博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="断言集">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/11/2022-05-11-131152-%E7%BD%91%E4%B8%8A%E5%87%A0%E4%B9%8E%E9%83%BD%E9%9A%BE%E4%BB%A5%E6%89%BE%E5%88%B0%E7%9A%84Caddyfile%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">网上几乎都难以找到的Caddyfile配置文件的一些常见问题和解决方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-05-11 13:11:52 / Modified: 13:36:04" itemprop="dateCreated datePublished" datetime="2022-05-11T13:11:52+08:00">2022-05-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Caddyfile的反向代理配置里有好些坑，网上去找一大堆转贴的没几个讲的清楚，在这里特意标注下防止以后出问题时又去全网搜半天。</p>
+<h2 id="多路由处理"><a href="#多路由处理" class="headerlink" title="多路由处理"></a>多路由处理</h2><p>虽然Caddy能直接在URL配置中写上路由，但是如果有路由和子路由的多级处理，还是需要写在同一个配置内。</p>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">www.website.com &#123;</span><br><span class="line">        rewrite /subpath /subpath/</span><br><span class="line">        handle /subpath/* &#123;</span><br><span class="line">                uri strip_prefix /subpath</span><br><span class="line">                root * /subpath_www</span><br><span class="line">                file_server</span><br><span class="line">        &#125;</span><br><span class="line">        handle /* &#123;</span><br><span class="line">                reverse_proxy http://10.66.3.7:8000</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="子路由关键字"><a href="#子路由关键字" class="headerlink" title="子路由关键字"></a>子路由关键字</h2><p>其中每个子路由前面的关键字是handle，结果全网搜都没几个地方给写清楚的。</p>
+<h2 id="路由后带星号"><a href="#路由后带星号" class="headerlink" title="路由后带星号"></a>路由后带星号</h2><p>这个似乎和nginx比较相似</p>
+<h2 id="proxy的关键字是reverse-proxy"><a href="#proxy的关键字是reverse-proxy" class="headerlink" title="proxy的关键字是reverse_proxy"></a>proxy的关键字是reverse_proxy</h2><p>不要直接用proxy，用reverse_proxy</p>
+<h2 id="路由重写去前缀"><a href="#路由重写去前缀" class="headerlink" title="路由重写去前缀"></a>路由重写去前缀</h2><p>用<code>rewrite</code>在外部路由重写</p>
+<p>用<code>uri strip_prefix</code>在内部做路由重写，去掉前缀</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://raingather.top/2022/05/09/2022-05-09-222506-%E4%B8%80%E4%B8%AA%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E7%BD%91%E7%AB%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -826,71 +894,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://raingather.top/2021/06/29/2021-06-29-%E3%80%8C%E4%B8%89%E5%88%86%E9%92%9F%E7%BC%96%E7%A8%8B%E3%80%8DPython%E4%BB%8E0%E5%88%B0%E7%B2%BE%E9%80%9A%E3%80%8C01%E3%80%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="集雨">
-      <meta itemprop="description" content="高中技术选考向的分享博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="断言集">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/29/2021-06-29-%E3%80%8C%E4%B8%89%E5%88%86%E9%92%9F%E7%BC%96%E7%A8%8B%E3%80%8DPython%E4%BB%8E0%E5%88%B0%E7%B2%BE%E9%80%9A%E3%80%8C01%E3%80%8D/" class="post-title-link" itemprop="url">「三分钟编程」Python从0到精通「01」</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-06-29 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-29T00:00:00+08:00">2021-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-20 08:49:17" itemprop="dateModified" datetime="2022-04-20T08:49:17+08:00">2022-04-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <iframe src="//player.bilibili.com/player.html?aid=248936867&bvid=BV1av411H7jn&cid=361419653&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -960,14 +963,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
