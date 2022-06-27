@@ -416,4 +416,29 @@
         <tag>反向代理</tag>
       </tags>
   </entry>
+  <entry>
+    <title>用Caddy的uri-path-regexp修复IIS短文件名漏洞</title>
+    <url>/2022/06/27/2022-06-27-161931-%E7%94%A8Caddy%E7%9A%84uri-path-regexp%E4%BF%AE%E5%A4%8DIIS%E7%9F%AD%E6%96%87%E4%BB%B6%E5%90%8D%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<p>由于IIS里直接去修复IIS短文件名漏洞好像涉及到一些缓存的处理，并不是即可生效，所以找一个其它的方法使得立刻能对该漏洞进行修复。</p>
+<p>本质上，假如你的服务没有需要在URL里用到<code>~</code>字符的，那么IIS短文件名漏洞修复，大部分情况下可以通过屏蔽URL里的<code>~</code>符号来实现。</p>
+<p>所以只需要在IIS前端再假设一个<code>Caddy</code>，然后在<code>/etc/caddy/Caddyfile</code>里写入下配置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">www.yourwebsite.com &#123;</span><br><span class="line">        handle /* &#123;</span><br><span class="line">                uri path_regexp &quot;~&#123;1,&#125;&quot; &quot;&quot;</span><br><span class="line">                reverse_proxy http://10.0.0.123:8080  # your server host and port</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外吐槽下Caddy的文档对中文使用者太不友好了，看的云里雾里的。这么一个简单的细节找了好久的文档才解决。这里说下寻找文档过程中踩的坑：</p>
+<ol>
+<li><p><code>~</code>不能加反斜杠</p>
+</li>
+<li><p>uri path_regexp必须在handle里面，不能写在外面</p>
+</li>
+<li><p>不要用uri replace，也不要用rewrite</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+        <tag>Caddy</tag>
+        <tag>Nginx</tag>
+        <tag>URL</tag>
+      </tags>
+  </entry>
 </search>
