@@ -441,4 +441,35 @@
         <tag>URL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>obsidian全平台同步（包括iOS）免费完美解决方案</title>
+    <url>/2022/07/12/2022-07-12-092720-obsidian%E5%85%A8%E5%B9%B3%E5%8F%B0%E5%90%8C%E6%AD%A5%EF%BC%88%E5%8C%85%E6%8B%ACiOS%EF%BC%89%E5%85%8D%E8%B4%B9%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>obsidian的数据都是保存在指定的目录内的，所以很多人都大概能想到，pc端可以用git、rsync等工具来同步这些数据，利用GitHub或者Gitee或者自己服务器的sshd来完成数据的云端存放和同步。</p>
+<p>然而手机端和iPad端就没那么方便了。但经过一番折腾，也被我搞定了。方案如下：</p>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>Android的Termux APP可以模拟一个Linux环境在Android里。所以可以用obsidian指定一个目录，然后在Termux里编写下自动pull、commit、push的脚本即可。</p>
+<p>这里给个脚本仅供参考：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ob() &#123;</span><br><span class="line">    cd /sdcard/obsidian</span><br><span class="line">    git pull origin master</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obsave() &#123;</span><br><span class="line">    cd /sdcard/obsidian</span><br><span class="line">    git add -A</span><br><span class="line">    git commit -a -m &quot;auto save&quot;</span><br><span class="line">    git push origin master</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后每次要开obsidian，先Termux里ob一下，然后obsidian修改完后退出，Termux里再obsave一下即可。</p>
+<p>利用Termux的am等功能甚至能更加自动化，但是。。没有折腾下去了，包名和操作名的获取比较折腾。如果有大佬搞定了欢迎分享。</p>
+<h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><p>重头戏来了，iOS里没有像Android那么开放的文件系统可以操作，所以很麻烦，网上提供的很多方案是用<code>working copy</code>这类软件，很贵。</p>
+<p>最后被我研究出来，iOS里有个APP叫iSH，是类似Termux的免费应用，在iOS端模拟一个Linux环境。</p>
+<p>先安装obsidian，打开后新建一个库（名字自取），注意不要放在iCloud，放在本地，之后关闭obsidian。</p>
+<p>然后安装iSH后打开，运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir /mnt/obsidian</span><br><span class="line">mount -t ios website /mnt/obsidian</span><br></pre></td></tr></table></figure>
+
+<p>在跳出来的选择菜单中，选择<code>我的iPad -&gt; Obsidian</code>，这样就把obsidian在iPad里的文件夹给mount到了<code>/mnt/obsidian</code>。</p>
+<p>之后<code>apk add git openssh</code>来安装git和openssh，然后就可以按照一般Linux的操作方式来对待<code>/mnt/obsidian</code>的目录了，按照Termux的步骤写一下自动脚本，操作和Termux雷同。这样就完成了iOS的同步。</p>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+        <tag>obsidian</tag>
+        <tag>git</tag>
+        <tag>ssh</tag>
+        <tag>ios</tag>
+        <tag>ipad</tag>
+        <tag>termux</tag>
+        <tag>备份</tag>
+      </tags>
+  </entry>
 </search>

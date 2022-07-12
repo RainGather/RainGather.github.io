@@ -153,13 +153,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -188,6 +188,85 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://raingather.top/2022/04/07/2022-04-07-PVE-ipv6%E7%9A%84%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="集雨">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="断言集">
+      <meta itemprop="description" content="高中技术选考向的分享博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 断言集">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/07/2022-04-07-PVE-ipv6%E7%9A%84%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">PVE ipv6 设置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-07 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-07T00:00:00+08:00">2022-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-20 08:49:17" itemprop="dateModified" datetime="2022-04-20T08:49:17+08:00">2022-04-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>安装时如果设定PVE的ip为ipv4，那么默认情况下PVE是不会获取到公网的ipv6的（至少7.1-12版本为止不会）。需要修改下<code>/etc/sysctl.conf</code>，在末尾添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net.ipv6.conf.all.accept_ra=2</span><br><span class="line">net.ipv6.conf.default.accept_ra=2</span><br><span class="line">net.ipv6.conf.vmbr0.accept_ra=2</span><br><span class="line">net.ipv6.conf.all.autoconf=1</span><br><span class="line">net.ipv6.conf.default.autoconf=1</span><br><span class="line">net.ipv6.conf.vmbr0.autoconf=1</span><br></pre></td></tr></table></figure>
+
+<p>然后重启即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
